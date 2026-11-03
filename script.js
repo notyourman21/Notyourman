@@ -293,27 +293,17 @@ randomGuess.addEventListener("click", () => {
 submitGuess.addEventListener("click", () => {
   const guess = Number(percentageInput.value);
 
-  if (
-    percentageInput.value.trim() === "" ||
-    !Number.isInteger(guess) ||
-    guess < 0 ||
-    guess > 100
-  ) {
-    percentageInput.focus();
+  if (percentageInput.value.trim() === "" || guess < 0 || guess > 100) {
+    showReply("Please enter a number between 0 and 100! ❤️", "toQuestion3");
     return;
   }
 
   if (guess === 99) {
-    showReply(
-      `Wow, ${specialName}! You guessed it right! ❤️ But do you know why I left that 1% empty?`,
-      "toQuestion3"
-    );
-
+    showReply("Awww, 99%? You left 1% for me to prove! 🙈❤️", "toQuestion3");
+  } else if (guess === 100) {
+    showReply("100%? Someone's being extra confident! 😂❤️", "toQuestion3");
   } else {
-    showReply(
-      `Oh nooo, ${specialName}! 😂 You guessed it wrong! You're actually 99% special to me. Do you know why I left that 1% empty?`,
-      "toQuestion3"
-    );
+    showReply("Not quite! But I love your confidence! 🥰❤️", "toQuestion3");
   }
 });
 
